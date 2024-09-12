@@ -3,6 +3,8 @@
     <h1>User Detail</h1>
     <span>Message children:{{ name }}</span>
     <button @click="resetName">reset name</button>
+    <button @click="resetNameByCb">reset name by callback</button>
+    <div>User Age: {{ userAge }}</div>
   </div>
 </template>
 
@@ -12,6 +14,14 @@ export default {
   props: {
     name: {
       type: String,
+      required: true
+    },
+    resetNameByCb: {
+      type: Function,
+      required: true
+    },
+    userAge: {
+      type: Number,
       required: true
     }
   },

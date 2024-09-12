@@ -2,11 +2,18 @@
   <div class="hello">
     <h1>Message parent: {{ name }}</h1>
     <button @click="changeName">change message</button>
+    <div>User Age : {{ age }}</div>
     <user-detail-component
       :name="name"
       @resetNameEmit="name = $event"
+      :resetNameByCb="resetName"
+      :userAge="age"
     ></user-detail-component>
-    <user-edit-component></user-edit-component>
+    <user-edit-component
+      :userAge="age"
+      @changeAgeEmit="age = $event"
+      :changeAgeParent="changeAgeParent"
+    ></user-edit-component>
   </div>
 </template>
 
@@ -21,12 +28,19 @@ export default {
   },
   data() {
     return {
-      name: "Welcome to Your Vue.js App"
+      name: "Admin",
+      age: 18
     };
   },
   methods: {
     changeName() {
       this.name = "Hello World";
+    },
+    resetName() {
+      this.name = "TBT Nguyen phu trong";
+    },
+    changeAgeParent() {
+      this.age = 20;
     }
   }
 };
