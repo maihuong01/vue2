@@ -14,17 +14,20 @@
       @changeAgeEmit="age = $event"
       :changeAgeParent="changeAgeParent"
     ></user-edit-component>
+    <product-component></product-component>
   </div>
 </template>
 
 <script>
 import UserDetail from "./UserDetail.vue";
 import UserEdit from "./UserEdit.vue";
+import Product from "./Product.vue";
 export default {
   name: "User",
   components: {
     "user-detail-component": UserDetail,
-    "user-edit-component": UserEdit
+    "user-edit-component": UserEdit,
+    "product-component": Product
   },
   data() {
     return {
