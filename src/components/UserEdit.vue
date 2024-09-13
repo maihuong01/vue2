@@ -17,10 +17,13 @@
         <span>{{ product }}</span>
       </li>
     </ul>
+    <div>Age children:{{ userAge }}</div>
+    <button @click="changeAge">change age</button>
   </div>
 </template>
 
 <script>
+import { eventBus } from "../main";
 import { productMixin } from "../mixins/productMixin";
 
 export default {
@@ -52,6 +55,8 @@ export default {
     changeAge() {
       this.localUserAge = 30;
       this.$emit("changeAgeEmit", this.localUserAge);
+      // eventBus.$emit("ageEmit", this.userAge);
+      eventBus.changeAge(this.userAge);
     }
   },
   filters: {

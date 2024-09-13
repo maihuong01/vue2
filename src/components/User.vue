@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>Message parent: {{ name }}</h1>
+    <p v-highlight:bgColor.delayed="'red'">Age parent {{ age }}</p>
     <button @click="changeName">change message</button>
     <div>User Age : {{ age }}</div>
     <user-detail-component
@@ -15,6 +16,8 @@
       :changeAgeParent="changeAgeParent"
     ></user-edit-component>
     <product-component></product-component>
+
+    <user-edit-component :userAge="age"></user-edit-component>
   </div>
 </template>
 
