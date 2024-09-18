@@ -17,7 +17,17 @@
     ></user-edit-component>
     <product-component></product-component>
 
-    <user-edit-component :userAge="age"></user-edit-component>
+    <hr />
+    <transition-component></transition-component>
+    <button v-on:click="show = !show">
+      Toggle
+    </button>
+    <!-- <transition name="fade">
+      <p v-if="show" class="card">hello</p>
+    </transition> -->
+    <transition name="slide">
+      <p v-if="show" class="card">Slide</p>
+    </transition>
   </div>
 </template>
 
@@ -35,7 +45,8 @@ export default {
   data() {
     return {
       name: "Admin",
-      age: 18
+      age: 18,
+      show: true
     };
   },
   methods: {
@@ -68,5 +79,58 @@ li {
 }
 a {
   color: #42b983;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  transition: opacity 0.5s;
+}
+.fade-leave /* .fade-leave-active below version 2.1.8 */ {
+}
+.fade-leave-active {
+  transition: opacity 0.5s;
+  opacity: 0;
+}
+.card {
+  background: rgb(176, 179, 41);
+  border: 1px solid rgb(176, 179, 41);
+  border-radius: 4px;
+}
+
+.slide-enter {
+  opacity: 0;
+}
+.slide-enter-active {
+  opacity: 1;
+  transition: opacity 1s;
+  animation: slide-in 1s ease-in forwards;
+}
+.slide-leave {
+  opacity: 1;
+}
+.slide-leave-active {
+  opacity: 0;
+  animation: slide-out 1s ease-out forwards;
+  transition: opacity 1s;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes slide-out {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateY(20px);
+  }
 }
 </style>
